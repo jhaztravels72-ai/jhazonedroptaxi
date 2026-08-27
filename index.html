@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ta">
 <head>
@@ -25,7 +26,7 @@
         th, td { padding: 12px 10px; text-align: left; border-bottom: 1px solid #eee; font-size: 15px; }
         th { background-color: #f8f9fa; color: #555; }
         
-        .btn-whatsapp { display: block; background-color: #25D366; color: white; text-align: center; padding: 15px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 18px; margin-top: 25px; box-shadow: 0 4px 8px rgba(37,211,102,0.3); border: none; width: 100%; cursor: pointer; text-shadow: 1px 1px 1px rgba(0,0,0,0.1); }
+        .btn-whatsapp { display: block; background-color: #25D366; color: white; text-align: center; padding: 15px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 18px; margin-top: 25px; box-shadow: 0 4px 8px rgba(37,211,102,0.3); border: none; width: 100%; cursor: pointer; }
         .btn-whatsapp:hover { background-color: #128C7E; }
         
         p.content-text { line-height: 1.6; color: #555; text-align: justify; font-size: 14px; }
@@ -51,10 +52,16 @@
         <!-- Booking Form -->
         <div class="card">
             <h2>🚖 Quick Booking Form</h2>
-            <form id="taxiBookingForm" onsubmit="sendToWhatsApp(event)">
+            
+            <!-- Standard Form using Direct WhatsApp API (No JavaScript Needed) -->
+            <form action="https://wa.me" method="GET" target="_blank">
+                
+                <!-- This hidden input triggers the message starter -->
+                <input type="hidden" name="text" value="வணக்கம் Jhaz One Drop Taxi, நான் ஒரு டாக்ஸி புக் செய்ய விரும்புகிறேன். தயவுசெய்து எனது புக்கிங்கை உறுதி செய்யவும்.">
+
                 <div class="form-group">
                     <label>Trip Type (பயண வகை)</label>
-                    <select id="tripType" required>
+                    <select name="Trip_Type" required>
                         <option value="One Way">One Way (ஒரு வழிப் பயணம்)</option>
                         <option value="Round Trip">Round Trip (இரு வழிப் பயணம்)</option>
                         <option value="Hourly Package">Hourly Package (மணிநேர பேக்கேஜ்)</option>
@@ -62,30 +69,30 @@
                 </div>
                 <div class="form-group">
                     <label>Select Vehicle (வாகனம்)</label>
-                    <select id="vehicleType" required>
+                    <select name="Vehicle" required>
                         <option value="SEDAN (4+1)">SEDAN 4+1 (Swift, Etios)</option>
                         <option value="SUV (6+1)">SUV 6+1 (Ertiga, Innova)</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label>Full Name (முழு பெயர்)</label>
-                    <input type="text" id="fullName" placeholder="Enter your name" required>
+                    <input type="text" name="Customer_Name" placeholder="Enter your name" required>
                 </div>
                 <div class="form-group">
                     <label>Mobile Number (மொபைல் எண்)</label>
-                    <input type="tel" id="mobileNumber" placeholder="Enter mobile number" required>
+                    <input type="tel" name="Mobile" placeholder="Enter mobile number" required>
                 </div>
                 <div class="form-group">
                     <label>Pickup Location (ஏறும் இடம்)</label>
-                    <input type="text" id="pickupLoc" placeholder="City / Airport" required>
+                    <input type="text" name="Pickup" placeholder="City / Airport" required>
                 </div>
                 <div class="form-group">
                     <label>Drop Location (இறங்கும் இடம்)</label>
-                    <input type="text" id="dropLoc" placeholder="City / Airport" required>
+                    <input type="text" name="Drop" placeholder="City / Airport" required>
                 </div>
                 <div class="form-group">
                     <label>Pickup Date & Time (தேதி மற்றும் நேரம்)</label>
-                    <input type="datetime-local" id="pickupDateTime" required>
+                    <input type="datetime-local" name="Date_Time" required>
                 </div>
                 
                 <button type="submit" class="btn-whatsapp">💬 Book via WhatsApp Instantly</button>
@@ -131,34 +138,5 @@
         <p>Contact: +91 80153 12300 | Tamil Nadu, India.</p>
     </footer>
 
-    <!-- Simplified & 100% Reliable WhatsApp Redirection -->
-    <script>
-        function sendToWhatsApp(event) {
-            event.preventDefault();
-            
-            var tripType = document.getElementById('tripType').value;
-            var vehicleType = document.getElementById('vehicleType').value;
-            var fullName = document.getElementById('fullName').value;
-            var mobileNumber = document.getElementById('mobileNumber').value;
-            var pickupLoc = document.getElementById('pickupLoc').value;
-            var dropLoc = document.getElementById('dropLoc').value;
-            var pickupDateTime = document.getElementById('pickupDateTime').value;
-            
-            var textMessage = "வணக்கம் Jhaz One Drop Taxi, நான் ஒரு கார் புக் செய்ய விரும்புகிறேன்:\n\n" +
-                              "• பயண வகை: " + tripType + "\n" +
-                              "• வாகனம்: " + vehicleType + "\n" +
-                              "• பெயர்: " + fullName + "\n" +
-                              "• மொபைல்: " + mobileNumber + "\n" +
-                              "• ஏறும் இடம்: " + pickupLoc + "\n" +
-                              "• இறங்கும் இடம்: " + dropLoc + "\n" +
-                              "• தேதி & நேரம்: " + pickupDateTime;
-            
-            // Using standard global API link for absolute reliability across all devices
-            var url = "https://wa.me" + encodeURIComponent(textMessage);
-            window.open(url, '_blank');
-        }
-    </script>
-
 </body>
 </html>
-
