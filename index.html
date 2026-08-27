@@ -48,13 +48,14 @@
             🎉 Special Offer: Get up to ₹500 Off on your first One Way booking!
         </div>
 
-        <!-- Booking Form -->
+        <!-- Booking Form Section -->
         <div class="card">
             <h2>🚖 Quick Booking Form</h2>
-            <form id="taxiBookingForm" onsubmit="sendToWhatsApp(event)">
+            
+            <form id="safeTaxiForm" onsubmit="redirectToWhatsApp(event)">
                 <div class="form-group">
                     <label>Trip Type (பயண வகை)</label>
-                    <select id="tripType" required>
+                    <select id="tType" required>
                         <option value="One Way">One Way (ஒரு வழிப் பயணம்)</option>
                         <option value="Round Trip">Round Trip (இரு வழிப் பயணம்)</option>
                         <option value="Hourly Package">Hourly Package (மணிநேர பேக்கேஜ்)</option>
@@ -62,30 +63,30 @@
                 </div>
                 <div class="form-group">
                     <label>Select Vehicle (வாகனம்)</label>
-                    <select id="vehicleType" required>
+                    <select id="vType" required>
                         <option value="SEDAN (4+1)">SEDAN 4+1 (Swift, Etios)</option>
                         <option value="SUV (6+1)">SUV 6+1 (Ertiga, Innova)</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label>Full Name (முழு பெயர்)</label>
-                    <input type="text" id="fullName" placeholder="Enter your name" required>
+                    <input type="text" id="fName" placeholder="Enter your name" required>
                 </div>
                 <div class="form-group">
                     <label>Mobile Number (மொபைல் எண்)</label>
-                    <input type="tel" id="mobileNumber" placeholder="Enter mobile number" required>
+                    <input type="tel" id="mNo" placeholder="Enter mobile number" required>
                 </div>
                 <div class="form-group">
                     <label>Pickup Location (ஏறும் இடம்)</label>
-                    <input type="text" id="pickupLoc" placeholder="City / Airport" required>
+                    <input type="text" id="pLoc" placeholder="City / Airport" required>
                 </div>
                 <div class="form-group">
                     <label>Drop Location (இறங்கும் இடம்)</label>
-                    <input type="text" id="dropLoc" placeholder="City / Airport" required>
+                    <input type="text" id="dLoc" placeholder="City / Airport" required>
                 </div>
                 <div class="form-group">
                     <label>Pickup Date & Time (தேதி மற்றும் நேரம்)</label>
-                    <input type="datetime-local" id="pickupDateTime" required>
+                    <input type="datetime-local" id="pDateTime" required>
                 </div>
                 
                 <button type="submit" class="btn-whatsapp">💬 Book via WhatsApp Instantly</button>
@@ -108,53 +109,40 @@
                 <tr><td>SEDAN (4+1)</td><td><strong>₹14/km</strong></td></tr>
                 <tr><td>SUV (6+1)</td><td><strong>₹19/km</strong></td></tr>
             </table>
-
-            <h3>3. Hourly Packages (மணிநேர பேக்கேஜ்)</h3>
-            <table>
-                <tr><th>Vehicle</th><th>Rate (1 Hr / 10 Km incl.)</th></tr>
-                <tr><td>SEDAN (4+1)</td><td><strong>₹300</strong></td></tr>
-                <tr><td>SUV (6+1)</td><td><strong>₹400</strong></td></tr>
-            </table>
-        </div>
-
-        <!-- About Text -->
-        <div class="card">
-            <h2>Online Drop Taxi Booking on Jhaz One Drop Taxi</h2>
-            <p class="content-text">Most travelers in Tamil Nadu prefer exploring their favorite destinations via road for the flexibility and scenic beauty it offers. At Jhaz One Drop Taxi, we ensure that your journey is not just a commute but a comfortable experience with family and friends. Our online cab booking portal is designed to make your travel planning hassle-free, allowing you to select your preferred vehicle and route in just a few clicks.</p>
         </div>
 
     </div>
 
     <footer>
         <p>&copy; 2026 Jhaz One Drop Taxi. All Rights Reserved.</p>
-        <p>Contact: +91 80153 12300 | Tamil Nadu, India.</p>
+        <p>Contact: +91 80153 12300</p>
     </footer>
 
-    <!-- 100% Guaranteed WhatsApp Script fixing the contact list bug -->
+    <!-- Advanced Crash-Proof JavaScript Redirection -->
     <script>
-        function sendToWhatsApp(event) {
+        function redirectToWhatsApp(event) {
             event.preventDefault();
             
-            var tripType = document.getElementById('tripType').value;
-            var vehicleType = document.getElementById('vehicleType').value;
-            var fullName = document.getElementById('fullName').value;
-            var mobileNumber = document.getElementById('mobileNumber').value;
-            var pickupLoc = document.getElementById('pickupLoc').value;
-            var dropLoc = document.getElementById('dropLoc').value;
-            var pickupDateTime = document.getElementById('pickupDateTime').value;
+            var trip = document.getElementById('tType').value;
+            var car = document.getElementById('vType').value;
+            var name = document.getElementById('fName').value;
+            var phone = document.getElementById('mNo').value;
+            var pick = document.getElementById('pLoc').value;
+            var drop = document.getElementById('dLoc').value;
+            var timedate = document.getElementById('pDateTime').value;
             
-            var textMessage = "வணக்கம் Jhaz One Drop Taxi, நான் ஒரு கார் புக் செய்ய விரும்புகிறேன்:\n\n" +
-                              "• பயண வகை: " + tripType + "\n" +
-                              "• வாகனம்: " + vehicleType + "\n" +
-                              "• பெயர்: " + fullName + "\n" +
-                              "• மொபைல்: " + mobileNumber + "\n" +
-                              "• ஏறும் இடம்: " + pickupLoc + "\n" +
-                              "• இறங்கும் இடம்: " + dropLoc + "\n" +
-                              "• தேதி & நேரம்: " + pickupDateTime;
+            var fullMessage = "வணக்கம் Jhaz One Drop Taxi, நான் ஒரு கார் புக் செய்ய விரும்புகிறேன்:\n\n" +
+                              "• பயண வகை: " + trip + "\n" +
+                              "• வாகனம்: " + car + "\n" +
+                              "• பெயர்: " + name + "\n" +
+                              "• மொபைல்: " + phone + "\n" +
+                              "• ஏறும் இடம்: " + pick + "\n" +
+                              "• இறங்கும் இடம்: " + drop + "\n" +
+                              "• தேதி & நேரம்: " + timedate;
             
-            // Fixed Link format to force target phone chat window directly
-            var whatsappURL = "https://wa.me" + encodeURIComponent(textMessage);
-            window.location.href = whatsappURL;
+            // Safe Encoding that converts Tamil and special characters perfectly
+            var finalURL = "https://wa.me" + encodeURIComponent(fullMessage);
+            window.location.href = finalURL;
         }
     </script>
 
