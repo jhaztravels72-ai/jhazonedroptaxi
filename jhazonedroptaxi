@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jhaz One Drop Taxi - Best One Way Drop Taxi in Tamil Nadu</title>
+    <style>
+        body { font-family: 'Segoe UI', Arial, sans-serif; margin: 0; padding: 0; background-color: #f8f9fa; color: #333; text-align: center; }
+        header { background-color: #ffcc00; padding: 30px 20px; color: #000; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        header h1 { margin: 0; font-size: 32px; font-weight: bold; }
+        header p { margin: 5px 0 15px 0; font-size: 16px; }
+        .btn-call { display: inline-block; background-color: #000; color: #fff; padding: 10px 20px; text-decoration: none; border-radius: 25px; font-weight: bold; font-size: 16px; }
+        
+        .container { padding: 20px; max-width: 600px; margin: auto; }
+        
+        /* Offer Banner */
+        .offer-banner { background-color: #fff3cd; border: 1px dashed #ffc107; padding: 15px; border-radius: 8px; margin: 15px 0; font-weight: bold; }
+        
+        /* Form & Cards */
+        .card { background: white; padding: 20px; margin: 20px 0; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); text-align: left; }
+        .card h2 { color: #222; border-bottom: 3px solid #ffcc00; padding-bottom: 8px; margin-top: 0; font-size: 20px; }
+        
+        /* Form Fields */
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; margin-bottom: 5px; font-weight: bold; font-size: 14px; }
+        .form-group input, .form-group select { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; box-sizing: border-box; font-size: 15px; }
+        
+        /* Vehicle Selection Style */
+        .vehicle-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; }
+        .vehicle-option { border: 2px solid #eee; padding: 12px; border-radius: 8px; text-align: center; background: #fafafa; }
+        .vehicle-option.active { border-color: #ffcc00; background: #fffdf0; }
+        .price-tag { color: #e67e22; font-weight: bold; font-size: 16px; margin-top: 5px; }
+
+        /* Tables for Tariff */
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        th, td { padding: 12px 10px; text-align: left; border-bottom: 1px solid #eee; font-size: 15px; }
+        th { background-color: #f8f9fa; color: #555; }
+        
+        .btn-whatsapp { display: block; background-color: #25D366; color: white; text-align: center; padding: 15px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 18px; margin-top: 25px; box-shadow: 0 4px 8px rgba(37,211,102,0.3); border: none; width: 100%; cursor: pointer; }
+        .btn-whatsapp:hover { background-color: #128C7E; }
+        
+        p.content-text { line-height: 1.6; color: #555; text-align: justify; font-size: 14px; }
+        footer { background-color: #222; color: #fff; padding: 20px; font-size: 13px; margin-top: 40px; }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <h1>🚕 Jhaz One Drop Taxi</h1>
+        <p>Your safety and comfort is our concern</p>
+        <a href="tel:+918015312300" class="btn-call">📞 Call to Book Instantly: +91 80153 12300</a>
+    </header>
+
+    <div class="container">
+        
+        <!-- Special Offer -->
+        <div class="offer-banner">
+            🎉 Special Offer: Get up to ₹500 Off on your first One Way booking!
+        </div>
+
+        <!-- Booking Form -->
+        <div class="card">
+            <h2>🚖 Quick Booking Form</h2>
+            <form id="taxiBookingForm" onsubmit="sendToWhatsApp(event)">
+                <div class="form-group">
+                    <label>Trip Type (பயண வகை)</label>
+                    <select id="tripType" required>
+                        <option value="One Way">One Way (ஒரு வழிப் பயணம்)</option>
+                        <option value="Round Trip">Round Trip (இரு வழிப் பயணம்)</option>
+                        <option value="Hourly Package">Hourly Package (மணிநேர பேக்கேஜ்)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Select Vehicle (வாகனம்)</label>
+                    <select id="vehicleType" required>
+                        <option value="SEDAN (4+1)">SEDAN 4+1 (Swift, Etios)</option>
+                        <option value="SUV (6+1)">SUV 6+1 (Ertiga, Innova)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Full Name (முழு பெயர்)</label>
+                    <input type="text" id="fullName" placeholder="Enter your name" required>
+                </div>
+                <div class="form-group">
+                    <label>Mobile Number (மொபைல் எண்)</label>
+                    <input type="tel" id="mobileNumber" placeholder="Enter mobile number" required>
+                </div>
+                <div class="form-group">
+                    <label>Pickup Location (ஏறும் இடம்)</label>
+                    <input type="text" id="pickupLoc" placeholder="City / Airport" required>
+                </div>
+                <div class="form-group">
+                    <label>Drop Location (இறங்கும் இடம்)</label>
+                    <input type="text" id="dropLoc" placeholder="City / Airport" required>
+                </div>
+                <div class="form-group">
+                    <label>Pickup Date & Time (தேதி மற்றும் நேரம்)</label>
+                    <input type="datetime-local" id="pickupDateTime" required>
+                </div>
+                
+                <button type="submit" class="btn-whatsapp">💬 Book via WhatsApp Instantly</button>
+            </form>
+        </div>
+
+        <!-- Tariff Section -->
+        <div class="card">
+            <h2>💰 Our Transparent Tariff (கட்டண விவரங்கள்)</h2>
+            <h3>1. One Way Drop (ஒரு வழி)</h3>
+            <table>
+                <tr><th>Vehicle</th><th>Rate / Km</th></tr>
+                <tr><td>SEDAN (4+1)</td><td><strong>₹15/km</strong></td></tr>
+                <tr><td>SUV (6+1)</td><td><strong>₹20/km</strong></td></tr>
+            </table>
+
+            <h3>2. Round Trip (இரு வழிப் பயணம்)</h3>
+            <table>
+                <tr><th>Vehicle</th><th>Rate / Km</th></tr>
+                <tr><td>SEDAN (4+1)</td><td><strong>₹14/km</strong></td></tr>
+                <tr><td>SUV (6+1)</td><td><strong>₹19/km</strong></td></tr>
+            </table>
+
+            <h3>3. Hourly Packages (மணிநேர பேக்கேஜ்)</h3>
+            <table>
+                <tr><th>Vehicle</th><th>Rate (1 Hr / 10 Km incl.)</th></tr>
+                <tr><td>SEDAN (4+1)</td><td><strong>₹300</strong></td></tr>
+                <tr><td>SUV (6+1)</td><td><strong>₹400</strong></td></tr>
+            </table>
+        </div>
+
+        <!-- About Text (SEO Friendly) -->
+        <div class="card">
+            <h2>Online Drop Taxi Booking on Jhaz One Drop Taxi</h2>
+            <p class="content-text">Most travelers in Tamil Nadu prefer exploring their favorite destinations via road for the flexibility and scenic beauty it offers. At Jhaz One Drop Taxi, we ensure that your journey is not just a commute but a comfortable experience with family and friends. Our online cab booking portal is designed to make your travel planning hassle-free, allowing you to select your preferred vehicle and route in just a few clicks.</p>
+            <p class="content-text">With an easy-to-use interface and transparent pricing, booking a Drop Taxi has never been simpler. Whether you are traveling for business or leisure, our intercity car rentals provide the perfect solution for visiting cities across South India without the burden of return fares.</p>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Jhaz One Drop Taxi. All Rights Reserved.</p>
+        <p>Contact: +91 80153 12300 | Tamil Nadu, India.</p>
+    </footer>
+
+    <!-- JavaScript to handle WhatsApp redirect dynamically -->
+    <script>
+        function sendToWhatsApp(event) {
+            event.preventDefault();
+            
+            const tripType = document.getElementById('tripType').value;
+            const vehicleType = document.getElementById('vehicleType').value;
+            const fullName = document.getElementById('fullName').value;
+            const mobileNumber = document.getElementById('mobileNumber').value;
+            const pickupLoc = document.getElementById('pickupLoc').value;
+            const dropLoc = document.getElementById('dropLoc').value;
+            const pickupDateTime = document.getElementById('pickupDateTime').value;
+            
+            const whatsappNumber = "918015312300";
+            
+            const message = `வணக்கம் Jhaz One Drop Taxi, நான் ஒரு டாக்ஸி புக் செய்ய விரும்புகிறேன்:%0A%0A` +
+                            `• பயண வகை: ${tripType}%0A` +
+                            `• வாகனம்: ${vehicleType}%0A` +
+                            `• பெயர்: ${fullName}%0A` +
+                            `• மொபைல்: ${mobileNumber}%0A` +
+                            `• ஏறும் இடம்: ${pickupLoc}%0A` +
+                            `• இறங்கும் இடம்: ${dropLoc}%0A` +
+                            `• தேதி & நேரம்: ${pickupDateTime}`;
+            
+            const whatsappURL = `https://wa.me{whatsappNumber}?text=${message}`;
+            window.open(whatsappURL, '_blank');
+        }
+    </script>
+
+</body>
+</html>
